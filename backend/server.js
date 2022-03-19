@@ -28,6 +28,51 @@ app.get("/tasks" , (req , res) => {
     })
 })
 
+
+//------------------------------------------//
+
+/*
+app.get("/completedTask" , (req , res) => {
+    Todo.find ({ isCompleted : "true"}, (err , data) => {
+        if (err) {
+            console.log( "ERROR: " , err )
+        }else{
+            res.json(data)
+        }
+    })
+})
+
+
+------------------------------------------//
+
+
+app.get("/inCompletedTask" , (req , res) => {
+    Todo.find ({ isCompleted : "false"}, (err , data) => {
+        if (err) {
+            console.log( "ERROR: " , err )
+        }else{
+            res.json(data)
+        }
+    })
+})
+
+//------------------------------------------//
+
+*/
+
+// below end point is doing the same job of the above two
+
+app.get("/filter" , (req , res) => {
+    Todo.find ({ isCompleted : req.query.isCompleted}, (err , data) => {
+        if (err) {
+            console.log( "ERROR: " , err )
+        }else{
+            res.json(data)
+        }
+    })
+})
+
+
 //------------------------------------------//
 
 app.post("/newtask" , (req , res) => {
