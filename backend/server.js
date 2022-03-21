@@ -150,7 +150,7 @@ app.put("/task/:id" , (req , res) => {
 
 // ------------------------------------------//
 
-app.put("/task/:id/:isCompleted" , (req , res) => {
+app.put("/updateTask/:id/:isCompleted" , (req , res) => {
     
     Todo.updateOne ({_id: req.params.id} , {isCompleted: req.params.isCompleted} , (err , updateObj) => {
         

@@ -46,8 +46,42 @@ export default function App() {
   }
 
 
+  const deleteTask = (id) => {
+    axios
+    .delete(`http://localhost:5000/task/${id}`)   /* or "http://localhost:5000/" + id */
+    .then((response) => {
+      // console.log("Response: " , response);
+      console.log("Data: " , response.data);
+      // setTasks(response.data)
+      getData()
+      // SEARCH IN INTERNET for change react state usung spread operator 
+
+    })
+    .catch((err) => {
+      console.log("Error: " , err);
+    })
+  }
+
+
+  const updateTask = (id , newStatus) => {
+    axios
+    .put(`http://localhost:5000/updateTask/${id}/${newStatus}`)   /* or "http://localhost:5000/" + id */
+    .then((response) => {
+      // console.log("Response: " , response);
+      console.log("Data: " , response.data);
+      // setTasks(response.data)
+      getData()
+      // SEARCH IN INTERNET for change react state using spread operator 
+
+    })
+    .catch((err) => {
+      console.log("Error: " , err);
+    })
+  }
+
+
   const mapOverTasks = tasks.map((taskObj , i) =>( 
-  <Todo key = {i} task = {taskObj}/>
+  <Todo key = {i} task = {taskObj} deleteTask = {deleteTask} updateTask = {updateTask}/>
   ))
 
   return (
