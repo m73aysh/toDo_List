@@ -6,8 +6,10 @@ export default function Todo(props) {
 
   return (
     <div className='Todo'>
-        <p>Title: {title}</p>
         
+        <input type= "checkbox" defaultChecked = {isCompleted}/>
+        <span style={{textDecoration : isCompleted ? "line-through" : "none"}}>{title}</span>
+        <button>X</button>
     </div>
   )
 }

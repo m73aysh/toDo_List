@@ -6,3 +6,14 @@
   border: 2px solid blue;
 
 }
+
+.Todo span{
+
+  margin: 0px 10px 0px 10px;
+
+}
+
+.Add{
+  border: 2px solid green;
+
+}
