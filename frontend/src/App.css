@@ -1,27 +1,53 @@
 .app{
-  border: 2px solid red;
+  border: 3px solid black;
+  text-align: left;
+  background-color: #ccc;
+  font-size: 20px;
+  font-weight: bold;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 60px 60px 60px 60px
+}
+
+.button{
+  background-color: gray; /* Green */
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin: 8px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(68, 67, 67);
+  color: white;
 }
 
 .Todo{
-  border: 2px solid blue;
+  text-align: left;
 
 }
 
 .Todo span{
 
   margin: 0px 10px 0px 10px;
+  border-bottom: #555 solid;
 
 }
 
-.Add{
+/* .Add{
   border: 2px solid green;
 
-}
+} */
 
 .btn {
-  background-color: DodgerBlue; /* Blue background */
+  background-color: rgb(226, 38, 38); /* Blue background */
   border: none; /* Remove borders */
-  color: white; /* White text */
+  color: rgb(255, 255, 255); /* White text */
   padding: 10px 10px; /* Some padding */
   font-size: 16px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
@@ -30,5 +56,20 @@
 
 /* Darker background on mouse-over */
 .btn:hover {
-  background-color: RoyalBlue;
+  background-color: rgb(139, 36, 36);
+}
+
+.input{
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+.input:focus {
+  border: 3px solid #555;
 }
