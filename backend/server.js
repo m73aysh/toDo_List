@@ -5,6 +5,7 @@ const app = express()
 
 const db = require ("./db")
 const Todo = require ("./todo")
+const User = require ("./user")
 app.use(express.json())
 app.use(cors())
 
@@ -78,6 +79,38 @@ app.get("/filter" , (req , res) => {
 
 //------------------------------------------//
 
+
+app.post("/user/login" , (req , res) => {
+    User.find ({ email: req.body.email }, (err , arrUserFound) => {
+        if (err) {
+            console.log( "ERROR: " , err )
+        }else{
+            // if user data is available it well returned the data in array
+            if (arrUserFound.length === 1) {
+                // check entered password 
+                if (req.body.password === arrUserFound[0].password) {
+                    res.status(200).json({
+                        message : "Login successfuly",
+                        username: arrUserFound[0].username,
+                    })
+                }else{
+                    // incorrect password
+                    res.status(400).json({
+                        message: "Wrong password"
+                    })
+                }
+            }else {
+                res.status(404).json({
+                    message: "incorrect email"
+                })
+            }
+        }
+    })
+})
+
+
+//------------------------------------------//
+
 app.post("/newtask" , (req , res) => {
     Todo.create (req.body , (err , newTask) => {
         console.log(req.body)
@@ -89,6 +122,20 @@ app.post("/newtask" , (req , res) => {
     })
 })
 
+
+//------------------------------------------//
+
+app.post("/users/register" , (req , res) => {
+    User.create (req.body , (err , newUser) => {
+        console.log(req.body)
+        if (err) {
+            console.log( "ERROR: " , err )
+            res.status(400).json({message : "this email already registered"})
+        }else{
+            res.status(201).json("Create new user successfuly")
+        }
+    })
+})
 
 
 // ------------------------------------------//
