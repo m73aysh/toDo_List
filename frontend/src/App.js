@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import "./App.css"
+
 import axios from "axios"
+import {Routes , Route , Link} from "react-router-dom"
+
 import Todo from './compmnents/Todo'
 import Add from './compmnents/Add'
+import Register from './compmnents/Register'
+import Login from './compmnents/Login'
 
 export default function App() {
 
 
   const [tasks, setTasks] = useState([])
-
+  const [isLoggedIn, setIsLoggedIn ] = useState(false)
+  const [username, setUsername ] = useState("")
   useEffect( () => {
     getData()
   } , [])
@@ -120,16 +126,39 @@ export default function App() {
     
     <div className='app'>
       <p>Tasks</p>
+      <p>Profile: {username}</p>
+      <nav>
+        <Link to = "/Home">Home</Link> {"   |   "}
+        <Link to = "/login">Login</Link> {"   |   "}
+        <Link to = "/register">Register</Link>
 
+
+      </nav>
+
+
+      <Routes>
+      <Route path="/Home" element={
+      <div className='Home'>
       <Add createFunction = {postNewTask}/>
       <button className='button' onClick = {getData}>Get tasks</button>
       <button className='button' onClick = {deleteCompletedTask}>Delete completed tasks</button>
       <button className='button' onClick = {() => filter(true)}>Get completed tasks</button>
       <button className='button' onClick = {() => filter(false)}>Get pending tasks</button>
 
-      
+
       {mapOverTasks}
-    
+      </div>} />
+
+      <Route path="login" element={
+      <Login setIsLoggedIn = {setIsLoggedIn}
+        setUsername = {setUsername}/>} />
+      
+      <Route path="/register" element={<Register/>} />
+      
+      </Routes>
+      
+      
+
     </div>
   )
 }
