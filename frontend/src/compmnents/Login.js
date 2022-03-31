@@ -31,20 +31,20 @@ export default function Login(props) {
         
         <form action=''>
         
-        <label>E-mail: </label>
-        <input type = "email" placeholder='write your email' onChange={(e) => {setEmail (e.target.value)}}
-        value = {email} />
-        <br/>
-
-        <label>Password: </label>
-        <input type = "password" placeholder='write your password' onChange={(e) => {setPassword (e.target.value)}}
+        <div className="form-floating m-3">
+          <input type="email" className="form-control" id="floatingInput" placeholder='Email address' onChange={(e) => {setEmail (e.target.value)}}
+        value = {email}/>
+          <label for="floatingInput">Email address</label>
+        </div>
+       
+        <div className="form-floating m-3">
+          <input type="password" className="form-control" id="floatingPassword" placeholder="Password" onChange={(e) => {setPassword (e.target.value)}}
         value = {password}/>
-        <br/>
+          <label for="floatingPassword">Password</label>
+        </div>
         
-
+        <input  className='button m-3' type = "submit" value="Login" onClick={loginFunc}/>
         
-        <input type = "submit" value="Login" onClick={loginFunc}/>
-        <br/>
         <Link to = "/register">Don't have an Account ?</Link>
         
         </form>

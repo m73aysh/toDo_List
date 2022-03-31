@@ -117,6 +117,11 @@ export default function App() {
   }
 
 
+  const logoutFunc = () => {
+    setIsLoggedIn  (false);
+    setUsername ("");
+  }
+
   const mapOverTasks = tasks.map((taskObj , i) =>( 
   <Todo key = {taskObj._id} task = {taskObj} deleteTask = {deleteTask} updateTask = {updateTask}/>
   ))
@@ -124,26 +129,41 @@ export default function App() {
   return (
 
     
-    <div className='app'>
-      <p>Tasks</p>
-      <p>Profile: {username}</p>
-      <nav>
-        <Link to = "/Home">Home</Link> {"   |   "}
-        <Link to = "/login">Login</Link> {"   |   "}
-        <Link to = "/register">Register</Link>
+    <div className='app '>
+      <p className=' title m-3'>Tasks</p>
+      <p className='profile m-3'>Profile: {username}</p>
 
 
+{/* Bootstrap */}
+<div className='navBar m-3'>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light rounded">
+        <div className="container-fluid">
+           <a className="navbar-brand" href="#">Todo List</a>
+           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+           </button>
+              <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                 <div className="navbar-nav ">
+
+                   <Link to = "/Home" className='nav-link '>Home</Link>
+                   <Link to = "/login" className='nav-link'>Login</Link>
+                   <Link to = "/register" className='nav-link '>Register</Link>
+                </div>
+              </div>
+        </div>
       </nav>
+      </div>
 
-
+      
+      <button className='button m-3' onClick={logoutFunc}>Logout</button>
       <Routes>
       <Route path="/Home" element={
       <div className='Home'>
       <Add createFunction = {postNewTask}/>
-      <button className='button' onClick = {getData}>Get tasks</button>
-      <button className='button' onClick = {deleteCompletedTask}>Delete completed tasks</button>
-      <button className='button' onClick = {() => filter(true)}>Get completed tasks</button>
-      <button className='button' onClick = {() => filter(false)}>Get pending tasks</button>
+      <button className='button m-3' onClick = {getData}>Get tasks</button>
+      <button className='button m-3' onClick = {deleteCompletedTask}>Delete completed tasks</button>
+      <button className='button m-3' onClick = {() => filter(true)}>Get completed tasks</button>
+      <button className='button m-3' onClick = {() => filter(false)}>Get pending tasks</button>
 
 
       {mapOverTasks}

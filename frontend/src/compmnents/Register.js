@@ -34,23 +34,28 @@ export default function Register() {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
         
         <form action=''>
-        
-        <label>E-mail: </label>
-        <input type = "email" placeholder='write your email' onChange={ (event) => {setEmail(event.target.value)}} 
-        value = {email}/>
-        <br/>
 
-        <label>Password: </label>
-        <input type = "password" placeholder='write your password' onChange={ (event) => {setPassword(event.target.value)}}  
+        <div className="form-floating m-3">
+          <input type="email" className="form-control" id="floatingInput" placeholder='Email address' onChange={ (event) => {setEmail(event.target.value)}} 
+        value = {email}/>
+          <label for="floatingInput">Email address</label>
+        </div>
+
+        
+        <div className="form-floating m-3">
+          <input type="password" className="form-control" id="floatingPassword" placeholder="Password" onChange={ (event) => {setPassword(event.target.value)}}  
         value = {password}/>
-        <br/>
-        
-        <label>Username: </label>
-        <input type = "text" placeholder='write your username' onChange={ (event) => {setUsername(event.target.value)}} 
+          <label for="floatingPassword">Password</label>
+        </div>
+
+
+        <div className="form-floating m-3">
+          <input type="text" className="form-control" id="floatingInput" placeholder="Password" onChange={ (event) => {setUsername(event.target.value)}} 
         value = {username}/>
-        <br/>
+          <label for="floatingPassword">Username</label>
+        </div>
         
-        <input type = "submit" value = "Register" onClick={registerFunc}/>
+        <input className='button m-3' type = "submit" value = "Register" onClick={registerFunc}/>
         
         <Link to = "/Login">have an Account ?</Link>
         </form>
